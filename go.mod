@@ -1,4 +1,4 @@
-module github.com/henomis/langfuse-go
+module github.com/oceanio/langfuse-go
 
 go 1.21.1
 

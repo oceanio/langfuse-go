@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/henomis/langfuse-go/internal/pkg/api"
-	"github.com/henomis/langfuse-go/internal/pkg/observer"
-	"github.com/henomis/langfuse-go/model"
+	"github.com/oceanio/langfuse-go/internal/pkg/api"
+	"github.com/oceanio/langfuse-go/internal/pkg/observer"
+	"github.com/oceanio/langfuse-go/model"
 )
 
 const (
