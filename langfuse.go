@@ -30,6 +30,10 @@ func New(ctx context.Context) *Langfuse {
 		observer: observer.NewObserver(
 			ctx,
 			func(ctx context.Context, events []model.IngestionEvent) {
+				if len(events) == 0 {
+					// do not ingest if no events
+					return
+				}
 				err := ingest(ctx, client, events)
 				if err != nil {
 					fmt.Println(err)
