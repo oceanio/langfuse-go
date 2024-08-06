@@ -34,10 +34,8 @@ func New(ctx context.Context) *Langfuse {
 					// do not ingest if no events
 					return
 				}
-				err := ingest(ctx, client, events)
-				if err != nil {
-					fmt.Println(err)
-				}
+				// ignore err
+				_ = ingest(ctx, client, events)
 			},
 		),
 	}
