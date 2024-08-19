@@ -86,6 +86,11 @@ func (l *Langfuse) Generation(g *model.Generation, parentID *string) (*model.Gen
 		g.ParentObservationID = *parentID
 	}
 
+	if g.StartTime == nil {
+		now := time.Now().UTC()
+		g.StartTime = &now
+	}
+
 	l.observer.Dispatch(
 		model.IngestionEvent{
 			ID:        buildID(nil),
@@ -104,6 +109,11 @@ func (l *Langfuse) GenerationEnd(g *model.Generation) (*model.Generation, error)
 
 	if g.TraceID == "" {
 		return nil, fmt.Errorf("trace ID is required")
+	}
+
+	if g.EndTime == nil {
+		now := time.Now().UTC()
+		g.EndTime = &now
 	}
 
 	l.observer.Dispatch(
@@ -151,6 +161,11 @@ func (l *Langfuse) Span(s *model.Span, parentID *string) (*model.Span, error) {
 		s.ParentObservationID = *parentID
 	}
 
+	if s.StartTime == nil {
+		now := time.Now().UTC()
+		s.StartTime = &now
+	}
+
 	l.observer.Dispatch(
 		model.IngestionEvent{
 			ID:        buildID(nil),
@@ -170,6 +185,11 @@ func (l *Langfuse) SpanEnd(s *model.Span) (*model.Span, error) {
 
 	if s.TraceID == "" {
 		return nil, fmt.Errorf("trace ID is required")
+	}
+
+	if s.EndTime == nil {
+		now := time.Now().UTC()
+		s.EndTime = &now
 	}
 
 	l.observer.Dispatch(
